@@ -12,8 +12,12 @@ app.get('/users/:id', (req, res) => {
 });
 
 app.get('/users/:id/posts/:post_id', (req, res) => {
-  res.end('Heyoo from the posts page! User id is ' + req.params.id +
-          ' and post id is ' + req.params.post_id);
+  res.end(
+    'Heyoo from the posts page! User id is ' +
+      req.params.id +
+      ' and post id is ' +
+      req.params.post_id
+  );
 });
 
 app.post('/', (req, res) => {
@@ -21,5 +25,13 @@ app.post('/', (req, res) => {
 });
 
 app.put('/', (req, res) => {
+  res.end('Put something');
+});
 
+app.patch('/', (req, res) => {
+  res.end('Patch something');
+});
+
+app.delete('/', (req, res) => {
+  res.end('Delete something');
 });
