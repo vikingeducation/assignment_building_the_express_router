@@ -4,20 +4,16 @@ var router = require('./lib/router');
 
 var express = {}
 
-var port = 3000;
-var host = 'localhost';
-
 // var server = http.createServer(router.handle);
 var server = http.createServer(router.handle);
 
-
-server.listen(port, host, () => {
-	console.log("Listening to Server");
-});
+function listen(port, host, callback) {
+	server.listen(port, host, callback);
+};
 
 function get(path, callback) {
 	router.routes.get[path] = callback;
 	console.log(router.routes);
 };
 
-module.exports = { get };
+module.exports = { get, listen };
