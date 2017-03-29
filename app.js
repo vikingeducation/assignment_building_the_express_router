@@ -17,6 +17,9 @@ app.get('/', (req, res) => {
   res.end('Hi world!\n');
 });
 
+app.post('/', (req, res) => {
+  res.end('This is the POST')
+})
 
 
 // 4. Start up a server with app.listen
