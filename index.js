@@ -15,3 +15,11 @@ app.get('/users/:id/posts/:post_id', (req, res) => {
   res.end('Heyoo from the posts page! User id is ' + req.params.id +
           ' and post id is ' + req.params.post_id);
 });
+
+app.post('/', (req, res) => {
+  res.end(req.body);
+});
+
+app.put('/', (req, res) => {
+
+});
