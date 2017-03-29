@@ -8,6 +8,12 @@ function ExpressRouter() {
     let routes = {};
     
     routes.get = {};
+    /*
+    {
+        '/' : callback,
+        '/vlad', callback
+    }
+    */
     routes.post = {};
     
     
@@ -27,6 +33,16 @@ function ExpressRouter() {
     
     function get(path, callback) {
         //Pass path and callback to routes property
+        // path = /:foo
+        // regex(path)
+        // req.url = /egle
+        let regex = /(\w+)/g;
+        let x = req.url.match(regex);
+        if (x) {
+            routes.get[x[1]] = callback;
+        }
+        
+        
         routes.get[path] = callback;
     }
 
