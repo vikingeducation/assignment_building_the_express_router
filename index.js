@@ -17,4 +17,4 @@ app.get('/users/:id', (req, res) => {
   res.end('in the id route');
 });
 
-parse('localhost:3000/users/:id');
+// parse('localhost:3000/users/:id');
