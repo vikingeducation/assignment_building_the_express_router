@@ -6,10 +6,10 @@ var express = require('./lib/our_express');
 var app = express();
 
 // 3. Create routes via the app object
-/*app.get('/', (req, res) => {
-  console.log(req);
+app.get('/', (req, res) => {
+  // console.log(req);
   res.end('Hi world!\n');
-});*/
+});
 
 // 4. Start up a server with app.listen
 var port = process.env.PORT || 4000;
