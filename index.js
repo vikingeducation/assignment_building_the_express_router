@@ -7,3 +7,6 @@ app.get('/', (req, res) => {
   res.end('Hello routing file!');
 });
 
+app.get('/users/:id', (req, res) => {
+  res.end('This is an ID page');
+});
