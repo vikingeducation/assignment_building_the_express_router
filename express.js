@@ -28,21 +28,25 @@ function ExpressRouter() {
             let found = false;
             let pathsLength = paths.length;
             let index = 0;
+
             while(!found && index < pathsLength) {
                 var regex = new RegExp(paths[index], 'gi');
                 var match = regex.exec(req.url);
-                if (match) {
-                    routes.get[paths[index]].callback(req, res);
-                    found = true;
-                    console.log('match ' + match);
-                    console.log('paths index ' + paths[index]);
-
-
-                }
+                req.params = {};
+                if (match) { //Add all route params to the req.params object
+                    let p = new Promise(function (resolve, reject) {
+                        
+                        resolve(match[1]);
+                    });
+                    p.then(function onFulfilled(data) {
+                        req.params[routes.get[paths[index]].params[0]] = data;
+                        routes.get[paths[index]].callback(req, res);
+                    }).catch(function rejected(err) {
+                        throw err;
+                });
                 index++;
             }
-            //If no matches
-            if (!found) {
+            if (!found) //No matches, endpoint not found
                 res.statusCode = 404;
                 res.end("Not found");
             }
