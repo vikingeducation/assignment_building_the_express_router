@@ -18,8 +18,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-  res.end('This is the POST')
-})
+  res.end('This is the POST and req.body is', req.body);
+});
 
 
 // 4. Start up a server with app.listen
