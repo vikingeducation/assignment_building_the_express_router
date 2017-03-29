@@ -7,6 +7,10 @@ app.get('/', (req, res) => {
   res.end('Hello routing file!');
 });
 
+app.get(/^fooba[r]+$/, (req, res) => {
+  
+});
+
 app.get('/users/:id', (req, res) => {
   res.end('Hiyoo from the user ID page! User id is ' + req.params.id);
 });
@@ -28,10 +32,10 @@ app.put('/', (req, res) => {
   res.end('Put something');
 });
 
-app.patch('/', (req, res) => {
+app.patch('/users/:id', (req, res) => {
   res.end('Patch something');
 });
 
-app.delete('/', (req, res) => {
+app.delete('/users/:id', (req, res) => {
   res.end('Delete something');
 });
