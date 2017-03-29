@@ -11,9 +11,10 @@ app.get('/', (req, res) => {
   res.end('Hi world!\n');
 });
 
-app.get('/demo/:number', (req, res) => {
-  let number = req.params[:number];
-  res.end(`Hello ${number}`);
+app.get('/users/:user/profile/:setting', (req, res) => {
+  let user = req.params[':user'];
+  let setting = req.params[':setting'];
+  res.end(`Hello ${user}, you are in the ${setting} page!`);
 });
 
 
