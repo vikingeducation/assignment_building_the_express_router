@@ -11,7 +11,7 @@ app.get('/users/:id', (req, res) => {
   res.end('Hiyoo from the user ID page! User id is ' + req.params.id);
 });
 
-app.get('users/:id/posts/:post_id', (req, res) => {
+app.get('/users/:id/posts/:post_id', (req, res) => {
   res.end('Heyoo from the posts page! User id is ' + req.params.id +
-          'and post id is ' + req.params.post_id);
+          ' and post id is ' + req.params.post_id);
 });
