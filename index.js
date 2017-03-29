@@ -3,8 +3,6 @@ let app = express;
 
 app.listen(3000, 'localhost')
 
-
 app.get('/', (req, res) => {
-  //console.log(req);
   res.end('Hi world!\n');
 });
