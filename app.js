@@ -7,9 +7,15 @@ var app = express();
 
 // 3. Create routes via the app object
 app.get('/', (req, res) => {
-  // console.log(req);
+  console.log(req.params);
   res.end('Hi world!\n');
 });
+
+app.get('/demo/:number', (req, res) => {
+  let number = req.params[:number];
+  res.end(`Hello ${number}`);
+});
+
 
 // 4. Start up a server with app.listen
 var port = process.env.PORT || 4000;
