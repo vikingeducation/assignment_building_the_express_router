@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 
 app.get('/:foo', (req, res) => {
   
-  res.end('Hi world!\n');
+  res.end('Hi world! Hi world!!\n');
 });
 
 // 4. Start up a server with app.listen
