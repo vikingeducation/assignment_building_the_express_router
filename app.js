@@ -8,15 +8,17 @@ var express = require('./express');
 var app = express();
 
 // 3. Create routes via the app object
+app.get('/:foo', (req, res) => {
+  
+  res.end('Hi world! Hi world!!\n');
+});
+
 app.get('/', (req, res) => {
   
   res.end('Hi world!\n');
 });
 
-app.get('/:foo', (req, res) => {
-  
-  res.end('Hi world! Hi world!!\n');
-});
+
 
 // 4. Start up a server with app.listen
 var port = process.env.PORT || 4000;

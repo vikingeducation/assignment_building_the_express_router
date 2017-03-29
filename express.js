@@ -10,7 +10,9 @@ function ExpressRouter() {
     routes.get = {};
     /*
     {
-        'pattern1' : callback,
+        'pattern1' { callback: callback,
+            params: params
+            }
         'pattern2', callback
     }
     */
@@ -22,7 +24,7 @@ function ExpressRouter() {
         let server = http.createServer((req, res) => {
             console.log('url', req.url);
             console.log('routes.get', routes.get);
-            let paths = Object.key(routes.get);
+            let paths = Object.keys(routes.get);
             let found = false;
             let pathsLength = paths.length;
             let index = 0;
@@ -30,8 +32,12 @@ function ExpressRouter() {
                 var regex = new RegExp(paths[index], 'gi');
                 var match = regex.exec(req.url);
                 if (match) {
-                    routes.get[paths.element](req, res);
+                    routes.get[paths[index]].callback(req, res);
                     found = true;
+                    console.log('match ' + match);
+                    console.log('paths index ' + paths[index]);
+
+
                 }
                 index++;
             }
@@ -55,10 +61,12 @@ function ExpressRouter() {
         //var path = '/path/:to/something/:else';
 
         var array = [];
+        var paramsArray = [];
         var segments = path.split('/');
         segments.forEach((segment) => {
           if (segment[0] === ':') {
             array.push('([^\\/]+)');
+            paramsArray.push(segment.slice(1));
           } else {
             array.push(segment);
           }
@@ -66,7 +74,9 @@ function ExpressRouter() {
         
         var pattern = array.join('/');
         //=> /path/([^\\/]+)/something/([^\\/]+)
-        routes.get[pattern] = callback;
+        routes.get[pattern] = {};
+        routes.get[pattern].callback = callback;
+        routes.get[pattern].params = paramsArray;
     }
 
     return {
