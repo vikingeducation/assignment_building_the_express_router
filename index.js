@@ -39,3 +39,5 @@ app.patch('/users/:id', (req, res) => {
 app.delete('/users/:id', (req, res) => {
   res.end('Delete something');
 });
+
+console.log(app.routes.get.matches);
