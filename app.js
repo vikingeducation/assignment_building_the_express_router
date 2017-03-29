@@ -9,20 +9,15 @@ app.listen(port, host, () => {
   console.log("Still working?");
 });
 
-app.get("/puppies/bulldog/fat/white/", (req, res) => {
+app.get("/puppies/", (req, res) => {
   res.end("Puppies!!!");
 });
 
-// app.get("/puppies/:breed", function(req, res) {
-//   const breed = puppies[req.params.breed];
-//   res.end(`${breed}`);
-// });
-
-
-
-
-
-
+app.get("/puppies/:breed", function(req, res) {
+  res.end("the puppies have been found");
+  // const breed = puppies[req.params.breed];
+  // res.end(`${breed}`);
+});
 
 // app.get("/", function(req, res) {
 //   const name = people[req.params.name];
