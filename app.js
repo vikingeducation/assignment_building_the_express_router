@@ -17,6 +17,10 @@ app.post('/', (req, res) => {
   res.end('Hi post!\n');
 });
 
+app.post('/users/:user', (req, res) => {
+  console.log(req.body);
+  res.end('Hi post!\n');
+});
 
 
 var port = process.env.PORT || 4000;
