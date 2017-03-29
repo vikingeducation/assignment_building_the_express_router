@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
 });
 
 app.get(/^fooba[r]+$/, (req, res) => {
-  
+  res.end('heyy');
 });
 
 app.get('/users/:id', (req, res) => {
