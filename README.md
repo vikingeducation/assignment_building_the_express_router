@@ -7,5 +7,3 @@ Nicolas Amaya
 Mark Hanh
 
 
-Iteration 1:
-
