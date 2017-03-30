@@ -9,7 +9,6 @@ var app = express();
 
 // 3. Create routes via the app object
 app.get('/:foo', (req, res) => {
-  console.log("App.js file! Value of req.params", req.params);
   res.end(`Hi world! Hi world!! \n Here's the path:${ req.params.foo }`);
 });
 
@@ -18,7 +17,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-  res.end('This is the POST and req.body is', req.body);
+  res.end(`This is the POST and req.body is ${ req.body }`);
 });
 
 

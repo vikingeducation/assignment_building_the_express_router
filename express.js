@@ -22,8 +22,6 @@ function ExpressRouter() {
 
     function listen(...args) {
         let server = http.createServer((req, res) => {
-            console.log('url', req.url);
-            console.log('routes.get', routes.get);
             let method = req.method.toLowerCase();
 
             if (method === 'get') {
@@ -34,8 +32,8 @@ function ExpressRouter() {
                 let index = 0;
 
                 while(!found && index < pathsLength) {
-                    var regex = new RegExp(paths[index], 'gi');
-                    var match = regex.exec(req.url);
+                    let regex = new RegExp(paths[index], 'gi');
+                    let match = regex.exec(req.url);
                     req.params = {};
                     if (match) { //Add all route params to the req.params object
                         found = true;
@@ -62,56 +60,51 @@ function ExpressRouter() {
                 let found = false;
                 let pathsLength = paths.length;
                 let index = 0;
+                let p = new Promise(function (resolve, reject) {
 
-                while(!found && index < pathsLength) {
-                    var regex = new RegExp(paths[index], 'gi');
-                    var match = regex.exec(req.url);
-                    req.body = {};
-                    if (match) { //Add all route params to the req.params object
-                        found = true;
-                        // Initialize a string to concat
-                        // the data
-                        let p = new Promise(function (resolve, reject) {
-                            console.log("Promise started!");
-                            var body = '';
-                            
-                            // Every time a data event is fired
-                            // we concat the next chunk of data
-                            // to the string
-                            req.on('data', (data) => {
-                                console.log("Got some data");
-                            body += data;
-                            });
-                            
-                            // When the end event is fired
-                            // we know we have all the data
-                            // and can send back a response
-                            req.on('end', () => {
-                             req.body = body;
-                             resolve();
-                             console.log("Finished getting data!");
-                            });
-                        });
-                        p.then(function onFulfilled(data) {
-                                    console.log('routes.post', routes.post);
-                                    console.log('paths', paths);
-                                    console.log('index', index);
-                                    console.log('routes.post[paths[index]].callback', routes.post[paths[index]].callback);
-                                    routes.post[paths[index]].callback(req, res);    
-                                })
-                        .catch(function errors(err) {
-                            throw err;
-                        });
+                    while(!found && index < pathsLength) {
+                        let regex = new RegExp(paths[index], 'gi');
+                        let match = regex.exec(req.url);
+                        req.body = {};
+                        if (match) { //Add all route params to the req.params object
+                            found = true;
+                            // Initialize a string to concat
+                            // the data
+                                var body = [];
+                                
+                                
+                                // Every time a data event is fired
+                                // we concat the next chunk of data
+                                // to the string
+                                req.on('data', (data) => {
+                                    body.push(data);
+                                });
+                                
+                                // When the end event is fired
+                                // we know we have all the data
+                                // and can send back a response
+                                req.on('end', () => {
+                                    req.body = Buffer.concat(body).toString();
+                                    resolve(index);
+                                });
+                        } else {
+                            index++;
+                        }
                     }
-                    index++;
-                }
-                if (!found) { //No matches, endpoint not found
-                    res.statusCode = 404;
-                    res.end("Not found");
-                }
-
+                    if (!found) { //No matches, endpoint not found
+                        reject(404);
+                    }
+                });
+                p.then(function onFulfilled(data) {
+                        routes.post[paths[data]].callback(req, res); 
+                    }, function onReject(err) {
+                        res.statusCode = err;
+                        res.end("Not found");
+                })
+                .catch(function errors(err) {
+                        console.log(err); //Should just throw the error
+                });
             }
-
         });
         server.listen(...args);
     }
@@ -172,7 +165,6 @@ function ExpressRouter() {
         routes.post[pattern] = {};
         routes.post[pattern].callback = callback;
         routes.post[pattern].params = paramsArray;
-        console.log("function post making pattern:", routes.post[pattern]);
     }
 
     return {
