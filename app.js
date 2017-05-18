@@ -41,6 +41,10 @@ app.delete('/testdelete', (req, res) => {
   res.end('You successfully accessed /testdelete using a delete method!');
 });
 
+app.all('/testall', (req, res) => {
+  res.end('You successfully accessed /testall using the all method!');
+});
+
 app.listen(port, () => {
   console.log(`Listening on ${ port }`);
 });
