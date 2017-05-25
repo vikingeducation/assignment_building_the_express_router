@@ -12,6 +12,10 @@ function createExpress (){
 
     }
 
+    app.get = (path, callback) => {
+        router.get(path, callback);  
+    };
+
     return app;
 
 }
