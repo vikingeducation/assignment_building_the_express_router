@@ -13,5 +13,13 @@ app.listen(port, () => {
 
 
 app.get('/', (req, res) => {
-    res.end('hello');
+    res.end('Home directory');
+});
+
+app.get('/baz/:foo', (req, res) => {
+    res.end('Hello' + req.params.foo);
+});
+
+app.get('/bar', (req, res) => {
+    res.end('Hello');
 });

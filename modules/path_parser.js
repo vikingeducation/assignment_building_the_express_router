@@ -1,51 +1,53 @@
 let url = require('url');
 
-const userURL = url.parse('http://localhost:4000/foo/2/bar/cookies').pathname; //
-const getUrl =  '/foo/:baz/bar/:poo';
-
-const reqURL = userURL.split('/');
-const patternUrl = getUrl.split('/');
 
 let paramVar = /:(.+)/;
 
 
-let results = [{}];
+let results = {};
 
 let removeColon = (elemet) => {
-   return elemet.replace(/[^a-zA-Z]/g,"");
+    return elemet.replace(/[^a-zA-Z]/g, "");
 }
 
 
-//only proceed if length of both request url path and pattern path are the same
-if (reqURL.length == patternUrl.length) {
+let parse = (requestedURL, passedPattern) => {
+    let requestedPath = requestedURL.split('/');
+    let patternUrl = passedPattern.split('/');
+    results = {};
 
-    results[0]['path'] = getUrl;
+    //only proceed if length of both request url path and pattern path are the same
+    if (requestedPath.length == patternUrl.length) {
 
-    //iterate of the split array string
-    for (let i = 0; i < reqURL.length; i++) {
-        
-        
-        //check to see if current element (string) has is considered a url parameter by doing
-        //a regex test.. testing for occurance of :(colon) and any word after it.
-        //if so store as object.. url parameter being key.
-        if(paramVar.test(patternUrl[i])){
-            results[0][removeColon(patternUrl[i])] = reqURL[i];
-            continue;
+        //iterate of the split array string
+        for (let i = 0; i < requestedPath.length; i++) {
+
+
+            //check to see if current element (string) has is considered a url parameter by doing
+            //a regex test.. testing for occurance of :(colon) and any word after it.
+            //if so store as object.. url parameter being key.
+            if (paramVar.test(patternUrl[i])) {
+                results[removeColon(patternUrl[i])] = requestedPath[i];
+                continue;
+            }
+
+            //if any one of elements both the URLs mismatch then break out and empty the results object;
+            if (patternUrl[i] != requestedPath[i]) {
+                
+                console.log(`not right URL: ${passedPattern} + ${requestedURL}`);
+                results = "";
+                console.log(results);
+                break;
+            }
         }
-
-        //if any one of elements both the URLs mismatch then break out and empty the results object;
-        if(patternUrl[i] != reqURL[i]){
-           console.log('not right URL');
-           results = "";
-           console.log(results);
-           break;
-        }
+        return results;
     }
 
+    else {
+        return results; //return empty results
+    }
 
-    console.log(results);
 }
 
-else {
-    console.log('Doesnt not match');
-}
+module.exports = parse;
+
