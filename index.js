@@ -17,9 +17,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/baz/:foo', (req, res) => {
-    res.end('Hello' + req.params.foo);
+    res.end(`Hello from ${req.params.foo}`);
 });
 
-app.get('/bar', (req, res) => {
-    res.end('Hello');
+app.get('/bar/:boo/foo/:har', (req, res) => {
+    res.end(`Hello from ${req.params.boo} and ${req.params.har}`);
 });

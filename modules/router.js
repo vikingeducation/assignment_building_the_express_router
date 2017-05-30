@@ -14,49 +14,57 @@ Router.methods.forEach((method) => {
     Router.routes[method] = Router.routes[method] || {};
 
     Router[method] = (path, callback) => {
-        Router.patterns.push(path);
         Router.routes[method][path] = callback;
     };
 });
 
-Router.routeHandler = (req,res) => {
+
+Router.routeHandler = (req, res) => {
     const method = req.method.toLowerCase();
     const requestedPath = url.parse(req.url).pathname;
- 
+
     req.params = {};
-    //pass path to parse. Parse the url and find the matching pattern
+
+    
     let results = matchPatterns(requestedPath, method);
 
-    if(!isEmpty(results)){
-      req.params = results[0];
-      results[1](req,res);  
-      console.log(results);   
+    if (!isEmpty(results)) {
+        //assign the paramaters if any (paramaters being any path in  pattern url that contains colon before a word (:baz))
+        req.params = results.params;
+        //call the function(handler) for the specific matched path
+        results['handler'](req, res);
 
     }
-    else{
-        res.statusCode = 404;   
-        console.log(results);  
+    else {
+        res.statusCode = 404;
         res.end('404 not found');
     }
 
 
 };
 
-let matchPatterns = (requestedPath, method) =>{
-    let result = {};
-    
-    for(let i = 0; i<Router.patterns.length; i++){
-        if(!isEmpty(result)) break;
 
-        result[0] = parse(requestedPath, Router.patterns[i]);
-        result[1] = Router.routes[method][Router.patterns[i]]; //change this.. the handler is always of the first one
+//Go through the URL path patterns in the array and check it against the requestedURL
+let matchPatterns = (requestedPath, method) => {
+    let result;
+    //loop through patterns array
+    for (let i = 0; i < Router.patterns.length; i++) {
+        //check is result is empty, if not empty we know there was a successful match
+        if (!isEmpty(result)) break;
+
+        else {
+            //for each pattern in the patterns array, the callback (handler) for the specific pattern is also passed to the parse function
+            let handler = Router.routes[method][Router.patterns[i]];
+            result = parse(requestedPath, Router.patterns[i], handler);
+        }
+
     }
     return result;
 }
 
 function isEmpty(obj) {
-    for(var key in obj) {
-        if(obj.hasOwnProperty(key))
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key))
             return false;
     }
     return true;

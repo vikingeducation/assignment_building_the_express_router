@@ -11,40 +11,43 @@ let removeColon = (elemet) => {
 }
 
 
-let parse = (requestedURL, passedPattern) => {
+let parse = (requestedURL, passedPattern, handler) => {
     let requestedPath = requestedURL.split('/');
     let patternUrl = passedPattern.split('/');
+
     results = {};
 
     //only proceed if length of both request url path and pattern path are the same
     if (requestedPath.length == patternUrl.length) {
-
+        results.params = {}
         //iterate of the split array string
         for (let i = 0; i < requestedPath.length; i++) {
-
-
+            
+            
             //check to see if current element (string) has is considered a url parameter by doing
             //a regex test.. testing for occurance of :(colon) and any word after it.
             //if so store as object.. url parameter being key.
             if (paramVar.test(patternUrl[i])) {
-                results[removeColon(patternUrl[i])] = requestedPath[i];
+                results.params[removeColon(patternUrl[i])] = requestedPath[i];
                 continue;
             }
 
-            //if any one of elements both the URLs mismatch then break out and empty the results object;
+            //if any one of elements in both of the URLs mismatch then return empty results object;
             if (patternUrl[i] != requestedPath[i]) {
+                return results = {};
                 
-                console.log(`not right URL: ${passedPattern} + ${requestedURL}`);
-                results = "";
-                console.log(results);
-                break;
             }
         }
+
+        //If the pattern URL matched the requested URL, then assign the passed in callback that matched the patternURL,
+        //to be called in Router.routeHandler. 
+        results['handler'] = handler;
         return results;
     }
 
     else {
-        return results; //return empty results
+        //If nothing matched
+        return results = {}; //return empty results
     }
 
 }
