@@ -4,7 +4,7 @@ let parse = require('./path_parser');
 let Router = {};
 
 Router.routes = {};
-Router.methods = ['get', 'post'];
+Router.methods = ['get', 'post', 'delete', 'put', 'patch'];
 Router.patterns = [];
 
 //Get data from the requested objected and attach it to the requested object body
@@ -45,7 +45,7 @@ Router.routeHandler = (req, res) => {
     if (!isEmpty(results) || results != "") {
         //Promise to get POST data and when data retrievel is complete then resolve.
         let p = new Promise((resolve) => {
-            if (method !== 'get') {
+            if (method === 'post') {
                 extractPostData(req, resolve);
             }
             //if method is get then just resolve

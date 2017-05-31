@@ -28,3 +28,16 @@ app.post('/', (req,res) => {
     res.write('\n'+req.body);
     res.end('\nHello from POST request');
 });
+
+app.delete('/delete', (req, res) => {
+    res.end('\nHello from delete request'); 
+}); 
+
+app.put('/put', (req, res) => {
+    res.end('\nHello from put request'); 
+}); 
+
+
+app.patch('/patch', (req, res) => {
+    res.end('\nHello from patch request'); 
+}); 

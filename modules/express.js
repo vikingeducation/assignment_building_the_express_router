@@ -21,6 +21,18 @@ function createExpress (){
         router.post(path, callback);
     }
 
+    app.put = (path, callback) => {
+        router.put(path, callback);
+    }
+
+    app.delete = (path, callback) => {
+        router.delete(path, callback);
+    }
+
+    app.patch = (path, callback) => {
+        router.patch(path, callback);
+    }
+
     return app;
 
 }
