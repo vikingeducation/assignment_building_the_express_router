@@ -7,6 +7,18 @@ Router.routes = {};
 Router.methods = ['get', 'post'];
 Router.patterns = [];
 
+//Get data from the requested objected and attach it to the requested object body
+var extractPostData = (req, done) => {
+    var body = '';
+    req.on('data', (data) => {
+        body += data;
+    });
+
+    req.on('end', () => {
+        req.body = body;
+        done();
+    });
+}
 
 //When get or post is called, store the path and callback to that verb in Router.routes. 
 //ex: Router.routes.get./(callback);
@@ -25,15 +37,34 @@ Router.routeHandler = (req, res) => {
 
     req.params = {};
 
-    
-    let results = matchPatterns(requestedPath, method);
+    //If no match is found in routes for the requested URL path, then function matchPatterns will check if requested URL
+    //matches any URL patterns that have parameters. 
+    let results = Router.routes[method][requestedPath] || matchPatterns(requestedPath, method);
 
-    if (!isEmpty(results)) {
-        //assign the paramaters if any (paramaters being any path in  pattern url that contains colon before a word (:baz))
-        req.params = results.params;
-        //call the function(handler) for the specific matched path
-        results['handler'](req, res);
+    //check if results has a value
+    if (!isEmpty(results) || results != "") {
+        //Promise to get POST data and when data retrievel is complete then resolve.
+        let p = new Promise((resolve) => {
+            if (method !== 'get') {
+                extractPostData(req, resolve);
+            }
+            //if method is get then just resolve
+            else {
+                resolve();
+            }
+        });
 
+        p.then(() => {
+            if(results['handler']) { //check if results is an object which has a key called 'handler' -- return value from calling matchPatterns(requestedPath, method)
+            //assign the paramaters if any (paramaters being any path in  pattern url that contains colon before a word (:baz))
+            req.params = results.params;
+            //call the function(handler) for the specific matched path
+            results['handler'](req, res);
+            }
+            else{
+                results(req,res);
+            }
+        });
     }
     else {
         res.statusCode = 404;
@@ -59,6 +90,7 @@ let matchPatterns = (requestedPath, method) => {
         }
 
     }
+    console.log(result);
     return result;
 }
 

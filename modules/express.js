@@ -17,6 +17,10 @@ function createExpress (){
         router.get(path, callback);
     };
 
+    app.post = (path, callback) => {
+        router.post(path, callback);
+    }
+
     return app;
 
 }

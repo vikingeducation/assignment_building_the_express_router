@@ -23,3 +23,8 @@ app.get('/baz/:foo', (req, res) => {
 app.get('/bar/:boo/foo/:har', (req, res) => {
     res.end(`Hello from ${req.params.boo} and ${req.params.har}`);
 });
+
+app.post('/', (req,res) => {
+    res.write('\n'+req.body);
+    res.end('\nHello from POST request');
+});
