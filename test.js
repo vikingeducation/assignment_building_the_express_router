@@ -11,6 +11,22 @@ app.get('/', (req, res) => {
   res.end('Hi world!\n');
 });
 
+// app.get('/test', (req, res) => {
+//   console.log(req);
+//   res.end('Test page\n');
+// });
+//
+// app.get('/test2', (req, rest) => {
+//   console.log(req);
+//   res.end('Test page 2\n');
+// });
+
+//register parametrized route
+app.get('/foo/:bar', (req, res) => {
+  console.log(req);
+  res.end('Parametrized route\n');
+});
+
 // 4. Start up a server with app.listen
 var port = process.env.PORT || 4000;
 var host = 'localhost';
