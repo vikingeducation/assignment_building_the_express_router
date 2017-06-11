@@ -33,6 +33,11 @@ app.get('/foo/:bar/fiz/:baz', (req, res) => {
   res.end('Another parametrized route\n');
 });
 
+app.post('/', (req, res) => {
+  console.log(req.params);
+  res.end('A POST route');
+})
+
 // 4. Start up a server with app.listen
 var port = process.env.PORT || 4000;
 var host = 'localhost';
