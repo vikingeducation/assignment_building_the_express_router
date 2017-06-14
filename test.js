@@ -34,7 +34,6 @@ app.get('/foo/:bar/fiz/:baz', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-  console.log(req.params);
   res.end('A POST route');
 })
 
