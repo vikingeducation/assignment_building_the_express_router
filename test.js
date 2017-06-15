@@ -35,7 +35,19 @@ app.get('/foo/:bar/fiz/:baz', (req, res) => {
 
 app.post('/', (req, res) => {
   res.end('A POST route');
-})
+});
+
+app.put('/', (req, res) => {
+  res.end('A PUT route');
+});
+
+app.patch('/', (req, res) => {
+  res.end('A PATCH route');
+});
+
+app.delete('/', (req, res) => {
+  res.end('A DELETE route');
+});
 
 // 4. Start up a server with app.listen
 var port = process.env.PORT || 4000;
