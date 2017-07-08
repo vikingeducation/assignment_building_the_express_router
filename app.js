@@ -5,6 +5,10 @@ app.get('/', (req, res) => {
   res.end('Hi world!\n');
 });
 
+app.get('/users/:id', (req, res) => {
+  res.end(`Hi world ${req.id}`);
+});
+
 var port = process.env.PORT || 4000;
 var host = 'localhost';
 
