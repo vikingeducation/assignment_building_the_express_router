@@ -2,6 +2,9 @@ let ourExpress = require("./ourExpress");
 
 let app = ourExpress();
 
+// for each over object and do GET. to make it modular.
+//var availableRoutes = { "/": "/ url", dogs: "dogs url", apples: "apples url" };
+
 app.get("/", (req, res) => {
   res.end("hi");
 });
