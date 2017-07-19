@@ -6,17 +6,14 @@ const port = 3000;
 app.listen(port, () => {
   console.log("Listening on port " + port);
 });
-<<<<<<< HEAD
-debugger;
-/*app.get("/", (req, res) => {
-  res.end();
-});*/
-=======
+
+app.get(new RegExp(/waldo/), (req, res) => {
+  res.end("You found Waldo! :D");
+});
 
 app.get("/", (req, res) => {
   res.end("Home Page!!!!!!!!!");
 });
->>>>>>> 27fa7588b25759088808e340cd9580e31ad628e0
 
 //bug : no longer will serve just /whee correctly
 app.get("/whee/:id", (req, res) => {
@@ -47,7 +44,3 @@ app.delete("/", (req, res) => {
   console.log("YOU DELETED ALL THE THINGZ");
   res.end("YOU DELETED ALL THE THINGZ");
 });
-
-app.get(new RegExp(/waldo/), (req, res) => {
-	res.end("You found Waldo! :D");
-})
