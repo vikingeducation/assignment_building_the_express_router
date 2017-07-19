@@ -25,6 +25,11 @@ app.get('/:name', (req, res) => {
   res.end('One Param!!!!');
 });
 
+app.post('/', (req, res) => {
+  console.log('We got posted!');
+  res.end('Gone. Postal.');
+});
+
 var port = process.env.PORT || 4000;
 var host = 'localhost';
 
