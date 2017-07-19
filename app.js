@@ -3,13 +3,20 @@ const express = require('./lib');
 var app = express();
 
 app.get('/', (req, res) => {
-  console.log(req);
+  console.log('no params...');
+  // console.log(req);
   res.end('Hi world!\n');
 });
 
-app.get("/:name", (req, res) => {
-  console.log("params!");
-})
+app.get('/:name/:pet', (req, res) => {
+  console.log('params!');
+  res.end('Params!!!!');
+});
+
+app.get('/:name', (req, res) => {
+  console.log('One param!');
+  res.end('One Param!!!!');
+});
 
 var port = process.env.PORT || 4000;
 var host = 'localhost';
