@@ -1,15 +1,18 @@
-var express = require("express");
+let ourExpress = require('./ourExpress');
 
-var app = express();
+let app = ourExpress();
 
-app.get("/", (req, res) => {
-  console.log(req);
-  res.end("Hi world!\n");
-});
+app.get('/', (req, res) => {
+	console.log('hi')
+})
 
-var port = process.env.PORT || 4000;
-var host = "localhost";
+app.get('/cats', (req, res) => {
+	console.log('cats')
+})
+
+let port = process.env.PORT || 4000;
+let host = 'localhost';
 
 app.listen(port, () => {
-  console.log(`Listening at: http://${host}:${port}`);
+  console.log(`Listening at: http://${ host }:${ port }`);
 });
