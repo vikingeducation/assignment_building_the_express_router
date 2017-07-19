@@ -4,16 +4,24 @@ var app = express();
 
 app.get('/', (req, res) => {
   console.log('no params...');
-  // console.log(req);
   res.end('Hi world!\n');
 });
 
 app.get('/:name/:pet', (req, res) => {
+  res.write(JSON.stringify(req.params));
   console.log('Two params!');
   res.end('Two params!!!!');
 });
 
+app.get('/:name/has/:pet/', (req, res) => {
+  res.write(JSON.stringify(req.params));
+  console.log('Two params surrounding a literal!');
+  res.end('Two params surrounding a literal!!!!');
+});
+
+
 app.get('/:name', (req, res) => {
+  res.write(JSON.stringify(req.params));
   console.log('One param!');
   res.end('One Param!!!!');
 });
