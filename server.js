@@ -20,7 +20,7 @@ app.get("/dogs", (req, res) => {
 
 app.get("/dogs/:id", (req, res) => {
   // req.params
-  res.end("hi" + parser.urlVar{":id"});
+  res.end("hi" + req.params);
 });
 
 let port = process.env.PORT || 4000;
