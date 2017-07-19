@@ -19,7 +19,6 @@ app.get('/:name/has/:pet/', (req, res) => {
   res.end('Two params surrounding a literal!!!!');
 });
 
-
 app.get('/:name', (req, res) => {
   res.write(JSON.stringify(req.params));
   console.log('One param!');
