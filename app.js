@@ -6,6 +6,9 @@ const port = 3000;
 app.listen(port, () => {
   console.log("Listening on port " + port);
 });
+/*app.get("/", (req, res) => {
+  res.end();
+});*/
 
 //bug : no longer will serve just /whee correctly
 app.get("/whee/:id", (req, res) => {
@@ -26,3 +29,12 @@ app.post("/", (req, res) => {
   console.log(req.body);
   res.end(req.body);
 });
+/*app.put("/users/:id", (req, res) => {
+  console.log("Many things were PUT places ");
+  res.end();
+});
+
+app.delete("/", (req, res) => {
+  console.log("YOU DELETED ALL THE THINGZ");
+  res.end("YOU DELETED ALL THE THINGZ");
+});*/
