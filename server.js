@@ -13,6 +13,6 @@ app.get('/cats', (req, res) => {
 let port = process.env.PORT || 4000;
 let host = 'localhost';
 
-app.listen(port, () => {
+app.listen(port, host, () => {
   console.log(`Listening at: http://${ host }:${ port }`);
 });
