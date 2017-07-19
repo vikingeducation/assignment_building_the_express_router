@@ -33,10 +33,14 @@ app.post("/", (req, res) => {
 
 app.put("/users/:id", (req, res) => {
   console.log("Many things were PUT places ");
-  res.end();
+  res.end("This worked!");
 });
 
 app.delete("/", (req, res) => {
   console.log("YOU DELETED ALL THE THINGZ");
   res.end("YOU DELETED ALL THE THINGZ");
 });
+
+app.get(new RegExp(/waldo/), (req, res) => {
+	res.end("You found Waldo! :D");
+})
