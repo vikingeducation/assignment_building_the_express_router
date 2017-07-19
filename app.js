@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
 
 app.get('/:name/:pet', (req, res) => {
   console.log('params!');
-  res.end('Params!!!!');
+  res.end('Two params!!!!');
 });
 
 app.get('/:name', (req, res) => {
