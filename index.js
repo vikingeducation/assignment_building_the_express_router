@@ -16,16 +16,22 @@ app.get('/:foo', (req, res) => {
   res.end("hi foo!");
 });
 
-app.get('/person/:name', (req, res) => {
+app.get('/users/:name', (req, res) => {
   res.end(`This person's name is: ${req.params.name}`);
 });
 
-app.get('/person/:first/:last', (req, res) => {
+app.get('/users/:first/:last', (req, res) => {
   res.end(`First name: ${req.params.first} -> Last name: ${req.params.last}`);
 });
 
 app.post('/', (req, res) => {
   res.end(req.body);
+});
+
+app.put('/users/:first/:last', (req, res) => {
+    console.log(req.params);
+    console.log(req.body);
+    res.end('PUT');
 });
 
 // 4. Start up a server with app.listen
