@@ -6,10 +6,17 @@ const port = 3000;
 app.listen(port, () => {
   console.log("Listening on port " + port);
 });
+<<<<<<< HEAD
 debugger;
 /*app.get("/", (req, res) => {
   res.end();
 });*/
+=======
+
+app.get("/", (req, res) => {
+  res.end("Home Page!!!!!!!!!");
+});
+>>>>>>> 27fa7588b25759088808e340cd9580e31ad628e0
 
 //bug : no longer will serve just /whee correctly
 app.get("/whee/:id", (req, res) => {
@@ -30,12 +37,17 @@ app.post("/", (req, res) => {
   console.log(req.body);
   res.end(req.body);
 });
-/*app.put("/users/:id", (req, res) => {
+
+app.put("/users/:id", (req, res) => {
   console.log("Many things were PUT places ");
-  res.end();
+  res.end("This worked!");
 });
 
 app.delete("/", (req, res) => {
   console.log("YOU DELETED ALL THE THINGZ");
   res.end("YOU DELETED ALL THE THINGZ");
-});*/
+});
+
+app.get(new RegExp(/waldo/), (req, res) => {
+	res.end("You found Waldo! :D");
+})
