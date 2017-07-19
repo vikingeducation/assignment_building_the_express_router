@@ -1,3 +1,5 @@
+let urlVar = {};
+
 var CheckURL = function(str) {
   //feed entire url
   //check for all paths that start with colon
@@ -9,14 +11,36 @@ var CheckURL = function(str) {
       }
     }
   }
-  return newstr.join();
+  console.log(urlVar, 'urlVar');
+  return newstr.join('/');
 };
 
 var RandVarAssign = function(str2) {
+  urlVar[str2] = 1;
   //feed the path before colon
   //assign variable based on this
   console.log(str2);
   return "1";
 };
 
-module.exports = { CheckURL: CheckURL };
+let parsePattern = function(url, path) {
+  let pathArr = path.split('/');
+  let urlArr = url.split('/');
+
+  urlArr.forEach((item) => {
+    if (item[0] === ':') {
+      let key = item.slice(1);
+      let value = pathArr[pathArr.length - 1]
+
+      urlVar[key] = value;
+
+      console.log(urlVar);
+    }
+
+  })
+}
+
+module.exports = { 
+  CheckURL: CheckURL,
+  parsePattern: parsePattern
+};
