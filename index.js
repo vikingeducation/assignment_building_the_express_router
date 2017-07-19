@@ -1,5 +1,7 @@
+'use strict';
+
 // 1. Require Express
-var express = require('./express');
+var express = require('./lib/express');
 
 // 2. Create an application with the
 // returned function
@@ -12,7 +14,7 @@ app.get('/', (req, res) => {
 });
 
 // 4. Start up a server with app.listen
-var port = process.env.PORT || 4000;
+var port = process.env.PORT || 3000;
 var host = 'localhost';
 
 app.listen(port, () => {
