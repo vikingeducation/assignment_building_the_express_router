@@ -5,8 +5,9 @@ let express = require("./lib/express.js");
 const app = express();
 console.log(app);
 
-3. Create routes via the app object
+//3. Create routes via the app object
 app.get("/", (req, res) => {
+
   console.log(req);
   res.end("Hi world!\n");
 });
