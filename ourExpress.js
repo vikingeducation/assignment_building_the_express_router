@@ -13,13 +13,14 @@ function ourExpress() {
 	   },
 
 	  listen: function(port, hostname, callback) {
-	  	http.createServer((req, res) => {
+	  	let server = http.createServer((req, res) => {
+	  		console.log('hi')
 	  		res.statusCode = 200;
 	  		res.setHeader('Content-Type', 'text/plain');
   			res.end('Hello World\n');
 	  	});
 
-	  	callback();
+	  	server.listen(port, hostname, callback);
 	  }
    }
 }
