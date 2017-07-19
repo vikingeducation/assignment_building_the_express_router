@@ -1,18 +1,17 @@
 let express = require("./lib/express.js");
 
 const app = express();
-console.log(app);
+var port = process.env.PORT || 3000;
+var host = "0.0.0.0";
 
 app.get("/", (req, res) => {
-   console.log(req);
-   res.end("Hi world!\n");
+  res.end("Hi world!\n");
 });
 
-var port = process.env.PORT || 3000;
-var host = "localhost";
+app.get("/favicon.ico", function(req, res) {
+  console.log("stupid favicon");
+});
 
 app.listen(port, host, () => {
   console.log(`Listening at: http://${host}:${port}`);
 });
-
-module.exports = express;
