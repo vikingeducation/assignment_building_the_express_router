@@ -19,6 +19,11 @@ app.get('/:name/has/:pet/', (req, res) => {
   res.end('Two params surrounding a literal!!!!');
 });
 
+app.get(/^[a-zA-Z]{3}\d{3}$/, (req, res) => {
+  console.log('Whoa! A Regex!');
+  res.end('Whoa! A Regex!');
+});
+
 app.get('/:name', (req, res) => {
   res.write(JSON.stringify(req.params));
   console.log('One param!');
@@ -29,6 +34,7 @@ app.post('/', (req, res) => {
   console.log('We got posted!');
   res.end('Gone. Postal.');
 });
+
 
 var port = process.env.PORT || 4000;
 var host = 'localhost';
