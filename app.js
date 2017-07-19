@@ -27,6 +27,8 @@ app.get('/:name', (req, res) => {
 
 app.post('/', (req, res) => {
   console.log('We got posted!');
+  res.write(JSON.stringify(req.body));
+  console.log(JSON.stringify(req.body));
   res.end('Gone. Postal.');
 });
 
