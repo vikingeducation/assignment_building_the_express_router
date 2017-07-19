@@ -1,5 +1,5 @@
 let ourExpress = require("./ourExpress");
-// let parser = require("./Parser");
+let parser = require("./Parser");
 
 let app = ourExpress();
 
@@ -18,9 +18,9 @@ app.get("/dogs", (req, res) => {
   res.end("cats");
 });
 
-app.get("/dogs/:id/:name", (req, res) => {
-	// req.params
-  res.end('hi');
+app.get("/dogs/:id", (req, res) => {
+  // req.params
+  res.end("hi" + parser.urlVar{":id"});
 });
 
 let port = process.env.PORT || 4000;
