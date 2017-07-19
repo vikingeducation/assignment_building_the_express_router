@@ -5,9 +5,10 @@ var CheckURL = function(str) {
   //check for all paths that start with colon
   newstr = str.split("/");
   for (i = 0; i < newstr.length; i++) {
-    if (newstr[i].toString() === words) {
-      urlVar[newstr[i + 1]] = RandVarAssign(newstr[i + 1]);
-      newstr[i + 1] = urlVar[newstr[i + 1]];
+    if (newstr[i] === words) {
+      var newValue = RandVarAssign(newstr[i + 1]);
+      urlVar[newValue] = newstr[i + 1];
+      newstr[i + 1] = newValue;
 
       if (i + 1 <= newstr.length) {
       }

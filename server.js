@@ -18,9 +18,9 @@ app.get("/dogs", (req, res) => {
   res.end("cats");
 });
 
-app.get("/dogs/:id", (req, res) => {
+app.get("/dogs/1", (req, res) => {
   // req.params
-  res.end("hi" + req.params);
+  res.end("hi I didn't realize you wanted a dog like " + parser.urlVar[1]);
 });
 
 let port = process.env.PORT || 4000;
