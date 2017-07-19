@@ -23,13 +23,6 @@ app.get("/whuh/:id/yup/:num", (req, res) => {
 });
 
 app.post("/", (req, res) => {
-	var body = ""
-
-	req.on("data", (data) => {
-		body += data;
-	});
-
-	req.on("end", (err) => {
-		console.log(body);
-	});
-})
+  console.log(req.body);
+  res.enc();
+});
