@@ -7,6 +7,10 @@ app.get('/', (req, res) => {
   res.end('Hi world!\n');
 });
 
+app.get("/:name", (req, res) => {
+  console.log("params!");
+})
+
 var port = process.env.PORT || 4000;
 var host = 'localhost';
 
