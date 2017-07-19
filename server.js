@@ -10,6 +10,10 @@ app.get('/cats', (req, res) => {
 	console.log('cats')
 })
 
+app.get('/dogs', (req, res) => {
+	console.log('cats')
+})
+
 let port = process.env.PORT || 4000;
 let host = 'localhost';
 

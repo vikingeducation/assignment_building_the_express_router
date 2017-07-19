@@ -1,15 +1,13 @@
 var http = require("http");
+let Router = require("./Router");
 
 function ourExpress() {
-  let self = this;
-
-  self.routes = {};
-
+	
   return {
 		get: function(path, callback) {
-			  self.routes['get'] = self.routes['get'] || {};
-			 	self.routes['get'][path] = callback;
-			 	console.log(self.routes);
+			  Router.routes['get'] = Router.routes['get'] || {};
+			 	Router.routes['get'][path] = callback;
+			 	console.log(Router.routes);
 	   },
 
 	  listen: function(port, hostname, callback) {
@@ -25,7 +23,7 @@ function ourExpress() {
    }
 }
 
-module.exports = ourExpress
+module.exports = ourExpress;
 
 
 
