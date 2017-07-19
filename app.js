@@ -17,3 +17,19 @@ app.get("/whee", (req, res) => {
   res.setHeader("Content-Type", "text/plain");
   res.end("I sent a thing?");
 });
+
+app.get("/whuh/:id/yup/:num", (req, res) => {
+  res.end(`ID: ${req.params.id}\nNum: ${req.params.num}`);
+});
+
+app.post("/", (req, res) => {
+	var body = ""
+
+	req.on("data", (data) => {
+		body += data;
+	});
+
+	req.on("end", (err) => {
+		console.log(body);
+	});
+})
