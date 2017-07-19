@@ -13,20 +13,20 @@ app.get('/', (req, res) => {
 });
 
 app.get('/:foo', (req, res) => {
-  console.log(req.params);
   res.end("hi foo!");
 });
 
 app.get('/person/:name', (req, res) => {
-  console.log(req.params);
   res.end(`This person's name is: ${req.params.name}`);
+});
+
+app.get('/person/:first/:last', (req, res) => {
+  res.end(`First name: ${req.params.first} -> Last name: ${req.params.last}`);
 });
 
 app.post('/', (req, res) => {
   res.end(req.body);
 });
-
-
 
 // 4. Start up a server with app.listen
 var port = process.env.PORT || 3000;
