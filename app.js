@@ -7,7 +7,7 @@ app.listen(port, () => {
   console.log("Listening on port " + port);
 });
 
-app.get(new RegExp(/waldo/), (req, res) => {
+app.get(/waldo/, (req, res) => {
   res.end("You found Waldo! :D");
 });
 
