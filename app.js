@@ -12,3 +12,7 @@ app.get("/whee", (req, res) => {
   res.setHeader("Content-Type", "text/plain");
 	res.end("I sent a thing?");
 })
+
+app.get("/whee/:id", (req, res) => {
+	res.end("ID: " + req.params.id);
+})
