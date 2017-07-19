@@ -19,7 +19,7 @@ app.get('/:name/has/:pet/', (req, res) => {
   res.end('Two params surrounding a literal!!!!');
 });
 
-app.get(/^[a-zA-Z]{3}\d{3}$/, (req, res) => {
+app.get(/^\/[a-zA-Z]{3}\d{3}$/, (req, res) => {
   console.log('Whoa! A Regex!');
   res.end('Whoa! A Regex!');
 });
