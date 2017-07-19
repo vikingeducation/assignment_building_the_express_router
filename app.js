@@ -1,4 +1,8 @@
-const express = require("./lib/express")
+const express = require("./lib/express");
 const app = express();
 
-console.log(app.foo);
+const port = 3000;
+
+app.listen(port, () => {
+  console.log("Listening on port " + port);
+});
