@@ -27,6 +27,8 @@ var RandVarAssign = function(str2) {
 };
 
 let parsePattern = function(url, path) {
+  let obj = {};
+
   let pathArr = path.split("/");
   let urlArr = url.split("/");
 
@@ -35,11 +37,11 @@ let parsePattern = function(url, path) {
       let key = item.slice(1);
       let value = pathArr[pathArr.length - 1];
 
-      urlVar[key] = value;
-
-      console.log(urlVar);
+      obj[key] = value;
     }
   });
+
+  return obj;
 };
 
 module.exports = {
