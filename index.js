@@ -1,11 +1,5 @@
-assignment_building_the_express_router
-Build the core features of the Express router
-
-Alex Willenbrink
-Andre Senner
-
 // 1. Require Express
-var express = require('express');
+var express = require('./express');
 
 // 2. Create an application with the
 // returned function
@@ -24,4 +18,3 @@ var host = 'localhost';
 app.listen(port, () => {
   console.log(`Listening at: http://${ host }:${ port }`);
 });
->>>>>>> d0506ce91c450a7a6943c476a7d73a98a1ab2542
