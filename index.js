@@ -12,6 +12,11 @@ app.get('/', (req, res) => {
   res.end('Hi world!\n');
 });
 
+app.get('/person/:name/:address/:city/:state/:zip', (req, res) => {
+  console.log(req.params);
+  res.end(req.params)
+})
+
 app.get('/:foo', (req, res) => {
   res.end("hi foo!");
 });
@@ -25,14 +30,24 @@ app.get('/users/:first/:last', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-  res.end(req.body);
+  console.log(req.body);
+  res.end('POST');
 });
 
-app.put('/users/:first/:last', (req, res) => {
-    console.log(req.params);
+app.put('/', (req, res) => {
     console.log(req.body);
     res.end('PUT');
 });
+
+app.patch('/', (req, res) => {
+  console.log(req.body);
+  res.end('PATCH');
+})
+
+app.delete('/', (req, res) => {
+  console.log(req.body);
+  res.end('DELETE');
+})
 
 // 4. Start up a server with app.listen
 var port = process.env.PORT || 3000;
