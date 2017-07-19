@@ -24,5 +24,5 @@ app.get("/whuh/:id/yup/:num", (req, res) => {
 
 app.post("/", (req, res) => {
   console.log(req.body);
-  res.enc();
+  res.end(req.body);
 });
