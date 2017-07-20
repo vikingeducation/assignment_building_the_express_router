@@ -12,7 +12,7 @@ app.get('/ab(cd)?e', (req, res) => {
   res.end('You matched a pattern\n');
 });
 
-app.get('/a+b+e/:parent', (req, res) => {
+app.get('/a+-b+e/:parent', (req, res) => {
   console.log(JSON.stringify(req.params));
   console.log('You matched a pattern and a param!\n');
   res.write(JSON.stringify(req.params));

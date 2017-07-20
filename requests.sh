@@ -14,8 +14,8 @@ curl http://localhost:4000/Rfv332
 curl http://localhost:4000/abe
 curl http://localhost:4000/abcde
 # Match a pattern: '/a+b+e' and catch a param
-curl http://localhost:4000/abe/judith
-curl http://localhost:4000/aaaabbbbe/agatha
+curl http://localhost:4000/a-be/judith
+curl http://localhost:4000/aaaa-bbbbe/agatha
 
 # Test RESTful methods
 curl --request POST -H 'Content-Type: application/json' -d "{'this is': 'post'}" http://localhost:4000
