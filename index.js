@@ -16,6 +16,10 @@ app.get("/foo/:bar", function(req, res) {
   res.end();
 });
 
+app.post("/", function(req, res) {
+  console.log("did this work?");
+});
+
 app.listen(port, host, () => {
   console.log(`Listening at: http://${host}:${port}`);
 });
