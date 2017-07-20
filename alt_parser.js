@@ -1,27 +1,21 @@
-let pattern = {
-  user: function (newPath[1] => {
-    return {
-      id: newPath[1]
-    }
-  },
+let pattern = {},
 
-  default: ,
-
-};
-
-let some_pattern = {}
+var match = '/foo/1';
+path = '/foo/:bar'
 
 let parser = path => {
-  newPath = path.split("/");
-  newPath = newPath.slice(1);
-  console.log(newPath);
-  if (Object.keys(pattern).includes(newPath[0])) {pattern[newPath[0]] = default}
-    some_pattern = '/' +  pattern[newPath[0]]
-   
-  };
-  console.log(pattern);
-  
-
+  var matchSlices = match.split('/').slice(1)
+  var newPath = path.split('/').slice(1)
+  if (matchSlices[0] === newPath[0]){
+    if (newPath[1][0] === ':'){
+      let params = { newPath[1] : matchSlices[1] }
+      return params
+    } else {
+      return {};
+    }
+  } else {
+    return null;
+  }
 
 };
 

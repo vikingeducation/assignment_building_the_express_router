@@ -16,7 +16,6 @@ app.get("/foo/:bar", function(req, res) {
   res.end();
 });
 
-
 /*
 
 app.get(some_pattern, some_fxn_for_that_pattern)
