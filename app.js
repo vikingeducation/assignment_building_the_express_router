@@ -3,8 +3,10 @@ const express = require('./lib/express');
 var app = express();
 
 app.get('/', (req, res) => {
-  console.log('no params...');
-  res.end('Hi world!\n');
+  console.log('No url params...');
+  console.log(`Query params: ${JSON.stringify(req.query)}\n`);
+  res.write('Hi world!\n');
+  res.end(`Query params: ${JSON.stringify(req.query)}\n`);
 });
 
 app.get('/ab(cd)?e', (req, res) => {

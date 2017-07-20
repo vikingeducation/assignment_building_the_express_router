@@ -1,6 +1,8 @@
 #!/bin/bash
 
 curl http://localhost:4000
+# Query Parameters
+curl 'http://localhost:4000?name=bob&pet=pangolin&sport=boxing'
 # Path Parameters
 curl http://localhost:4000/jenny
 curl http://localhost:4000/joanne/tiger
