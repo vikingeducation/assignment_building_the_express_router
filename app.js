@@ -7,16 +7,16 @@ app.get('/', (req, res) => {
   res.end('Hi world!\n');
 });
 
-app.get('/:name/:pet', (req, res) => {
-  console.log('Two params!\n');
-  res.write(JSON.stringify(req.params));
-  res.end('Two params!!!!\n');
+app.get('/ab(cd)?e', (req, res) => {
+  console.log('You matched a pattern!\n');
+  res.end('You matched a pattern\n');
 });
 
-app.get('/:name/has/:pet/', (req, res) => {
-  console.log('Two params surrounding a literal!\n');
+app.get('/a+b+e/:parent', (req, res) => {
+  console.log(JSON.stringify(req.params));
+  console.log('You matched a pattern and a param!\n');
   res.write(JSON.stringify(req.params));
-  res.end('Two params surrounding a literal!!!!\n');
+  res.end('You matched a pattern and a param\n');
 });
 
 app.get(/^\/[a-zA-Z]{3}\d{3}$/, (req, res) => {
@@ -28,6 +28,18 @@ app.get('/:name', (req, res) => {
   console.log('One param!\n');
   res.write(JSON.stringify(req.params));
   res.end('One Param!!!!\n');
+});
+
+app.get('/:name/:pet', (req, res) => {
+  console.log('Two params!\n');
+  res.write(JSON.stringify(req.params));
+  res.end('Two params!!!!\n');
+});
+
+app.get('/:name/has/:pet/', (req, res) => {
+  console.log('Two params surrounding a literal!\n');
+  res.write(JSON.stringify(req.params));
+  res.end('Two params surrounding a literal!!!!\n');
 });
 
 app.post('/', (req, res) => {

@@ -1,11 +1,21 @@
 #!/bin/bash
 
-# Funky paths
 curl http://localhost:4000
+# Path Parameters
 curl http://localhost:4000/jenny
 curl http://localhost:4000/joanne/tiger
+# Second segment (has) is a literal, the first and third are params
 curl http://localhost:4000/suzy/has/elephant
+curl http://localhost:4000/joan/has/kittens
+# Matches a regex: three leters, three numbers
 curl http://localhost:4000/abc123
+curl http://localhost:4000/Rfv332
+# Match a pattern: '/ab(cd)?e'
+curl http://localhost:4000/abe
+curl http://localhost:4000/abcde
+# Match a pattern: '/a+b+e' and catch a param
+curl http://localhost:4000/abe/judith
+curl http://localhost:4000/aaaabbbbe/agatha
 
 # Test RESTful methods
 curl --request POST -H 'Content-Type: application/json' -d "{'this is': 'post'}" http://localhost:4000
