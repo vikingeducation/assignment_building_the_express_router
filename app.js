@@ -14,12 +14,12 @@ app.get('/yeah', (req, res) => {
   res.end('YEAH\n');
 });
 
-app.get('/:yeahh', (req, res) => {
+app.get('/:yeahh/:yup', (req, res) => {
   res.end('YEAHHHHHHHH\n');
 });
 
-app.get('/1', (req, res) => {
-  res.end('YEA11111\n');
+app.get('/1/2', (req, res) => {
+  res.end('YEA12121\n');
 });
 
 // 4. Start up a server with app.listen
