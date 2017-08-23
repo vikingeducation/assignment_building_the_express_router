@@ -7,6 +7,7 @@ var app = express();
 
 // 3. Create routes via the app object
 app.get('/', (req, res) => {
+  res.write("<html><body><form action='/posting' method='post'><button type='submit'>POST</button></form></body></html>");
   res.end('Hi world!\n');
 });
 
@@ -21,6 +22,10 @@ app.get('/:yeahh/:yup', (req, res) => {
 app.get('/1/2', (req, res) => {
   res.end('YEA12121\n');
 });
+
+app.post('/posting', (req, res) => {
+  res.end("posting worked\n");
+})
 
 // 4. Start up a server with app.listen
 var port = process.env.PORT || 4000;
