@@ -7,6 +7,15 @@ app.get('/', (req, res) => {
   res.end('Hello from the get method!');
 });
 
+app.get('/foo/:bar/baz/:biz', (req, res) => {
+  res.end(`Here are the params\nfoo: ${ req.params.foo }, baz: ${ req.params.baz }`);
+});
+
+app.post('/', (req, res) => {
+  res.write(req.body);
+  res.end('\nHello from post request\n');
+});
+
 var port = process.env.PORT || 3000;
 var host = 'localhost';
 
