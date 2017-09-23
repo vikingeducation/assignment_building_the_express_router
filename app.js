@@ -16,6 +16,21 @@ app.post('/', (req, res) => {
   res.end('\nHello from post request\n');
 });
 
+app.put('/', (req, res) => {
+  res.write(req.body);
+  res.end('\nHello from put request\n');
+});
+
+app.patch('/', (req, res) => {
+  res.write(req.body);
+  res.end('\nHello from patch request\n');
+});
+
+app.delete('/', (req, res) => {
+  res.write(req.body);
+  res.end('\nHello from delete request\n');
+});
+
 var port = process.env.PORT || 3000;
 var host = 'localhost';
 
