@@ -7,8 +7,8 @@ app.get('/', (req, res) => {
   res.end('Hello from the get method!');
 });
 
-app.get('/foo/:bar/baz/:biz', (req, res) => {
-  res.end(`Here are the params\nfoo: ${ req.params.foo }, baz: ${ req.params.baz }`);
+app.get('/foo/:id/bar/:secondId', (req, res) => {
+  res.end(`Here are the params\nid: ${ req.params.id }, secondId: ${ req.params.secondId }`);
 });
 
 app.post('/', (req, res) => {
