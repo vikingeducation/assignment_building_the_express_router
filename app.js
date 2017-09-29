@@ -15,7 +15,7 @@ app.get('/foo/:bar/', (req, res) => {
 });
 
 app.get('/foo/:bar/fiz/:baz/', (req, res) => {
-  res.end(`Hi /foo/:bar/fiz/:baz/!\n`);
+  res.end(`Hi /foo/:bar/foo/:biz/!\n`);
 });
 
 app.post('/', (req, res) => {
