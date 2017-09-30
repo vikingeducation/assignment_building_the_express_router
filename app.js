@@ -10,14 +10,6 @@ app.get('/', (req, res) => {
   res.end('Hello Express Router!\n');
 });
 
-app.get('/foo/:bar/', (req, res) => {
-  res.end(`Hi /foo/:bar/\n`);
-});
-
-app.get('/foo/:bar/fiz/:baz/', (req, res) => {
-  res.end(`Hi /foo/:bar/foo/:biz/!\n`);
-});
-
 app.post('/', (req, res) => {
   let data = req.body;
 
