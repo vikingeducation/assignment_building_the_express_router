@@ -10,6 +10,17 @@ app.get('/', (req, res) => {
   res.end('Hello Express Router!\n');
 });
 
+app.get('/foo/:bar/fiz/:baz/foe/:boop', (req, res) => {
+  res.end(` 
+  	{ bar: ${req.params['bar']} }, 
+  	{ baz: ${req.params['baz']} }, 
+  	{ boop: ${req.params['boop']} }!`);
+});
+
+app.get('/username/:uname/password/:pword', (req, res) => {
+  res.end(`Hello ${req.params['uname']}, your password is ${req.params['pword']}!`);
+});
+
 app.post('/', (req, res) => {
   let data = req.body;
 
