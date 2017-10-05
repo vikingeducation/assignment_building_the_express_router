@@ -16,6 +16,10 @@ app.get('/foo/:bar/biz/:baz', (req, res) => {
   res.end(`Your parameters are ${params}\n`);
 });
 
+app.get(/^fooba[r]+$/, (req, res) => {
+  res.end('RegExp request!\n');
+});
+
 app.post('/', (req, res) => {
   console.log(req.body);
   res.end('POST request!\n');
