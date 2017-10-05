@@ -3,8 +3,7 @@ const express = require('./lib/express');
 const app = express();
 
 app.get('/', (req, res) => {
-  const params = JSON.stringify(req.params);
-  res.end(`Your parameters are ${params}\n`);
+  res.end('Hi world!\n');
 });
 
 app.get('/foo/:bar/', (req, res) => {
@@ -15,6 +14,11 @@ app.get('/foo/:bar/', (req, res) => {
 app.get('/foo/:bar/biz/:baz', (req, res) => {
   const params = JSON.stringify(req.params);
   res.end(`Your parameters are ${params}\n`);
+});
+
+app.post('/', (req, res) => {
+  console.log(req.body);
+  res.end('Post request!\n');
 });
 
 const port = process.env.PORT || 4000;
