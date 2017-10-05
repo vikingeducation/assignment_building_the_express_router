@@ -18,7 +18,22 @@ app.get('/foo/:bar/biz/:baz', (req, res) => {
 
 app.post('/', (req, res) => {
   console.log(req.body);
-  res.end('Post request!\n');
+  res.end('POST request!\n');
+});
+
+app.put('/', (req, res) => {
+  console.log(req.body);
+  res.end('PUT request!\n');
+});
+
+app.patch('/', (req, res) => {
+  console.log(req.body);
+  res.end('PATCH request!\n');
+});
+
+app.delete('/', (req, res) => {
+  console.log(req.body);
+  res.end('DELETE request!\n');
 });
 
 const port = process.env.PORT || 4000;
