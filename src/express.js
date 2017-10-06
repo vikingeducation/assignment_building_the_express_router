@@ -1,5 +1,6 @@
 const http = require('http');
 const url = require('url');
+const pathParser = require('./parser.js');
 
 
 function express() {
@@ -29,17 +30,21 @@ app.handleReq = (req, res) => {
   const method = req.method.toLowerCase();
   const path = url.parse(req.url).pathname;
 
-  if (app.routes[method][path]) {
-    app.routes[method][path](req, res);
-  } else {
-    res.end('404 Not Found');
+  const patternsObj = app.routes[method];
+  for (let pattern in patternsObj) {
+    let maybeMatch = pathParser(path, pattern);
+
+    if (maybeMatch) {
+      const matchedPattern = maybeMatch.pattern;
+      const matchedParams = maybeMatch.params;
+
+      req.params = matchedParams;
+
+      return app.routes[method][matchedPattern](req, res);
+    }
   }
+
 };
-
-
-
-
-
 
 
 

@@ -9,6 +9,15 @@ app.get('/', (req, res) => {
   res.end('Hello World!');
 });
 
+app.get('/foo/:bar', (req, res) => {
+  res.end(`Param name bar has a value of ${req.params.bar}`)
+});
+
+app.get('/foo/:bar/fiz/:baz', (req, res) => {
+  res.write(`Param name bar has a value of ${req.params.bar}\n`);
+  res.end(`Param name baz has a value of ${req.params.baz}`);
+});
+
 
 
 app.listen(3000, () => {
