@@ -1,6 +1,7 @@
 const http = require('http');
 const url = require('url');
 const pathParser = require('./parser.js');
+const addPostDataToBody = require('./addPostDataToBody.js');
 
 
 function express() {
@@ -30,6 +31,7 @@ app.handleReq = (req, res) => {
   const method = req.method.toLowerCase();
   const path = url.parse(req.url).pathname;
 
+
   const patternsObj = app.routes[method];
   for (let pattern in patternsObj) {
     let maybeMatch = pathParser(path, pattern);
@@ -38,9 +40,17 @@ app.handleReq = (req, res) => {
       const matchedPattern = maybeMatch.pattern;
       const matchedParams = maybeMatch.params;
 
-      req.params = matchedParams;
+      addPostDataToBody(req)
+        .then((newReq) => {
+          req = newReq;
+          req.params = matchedParams;
 
-      return app.routes[method][matchedPattern](req, res);
+          return app.routes[method][matchedPattern](req, res);
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+
     }
   }
 

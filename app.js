@@ -23,6 +23,7 @@ app.post('/foo', (req, res) => {
 });
 
 app.post('/foo/:bar', (req, res) => {
+  res.write(`Post data from req.body: ${req.body}\n`);
   res.end('Post with parameter.\n');
 });
 
