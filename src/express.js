@@ -14,7 +14,7 @@ const app = {
 
     server.listen(port, cb);
   },
-  methods: ['get', 'post'],
+  methods: ['get', 'post', 'delete', 'put', 'patch'],
 };
 
 app.routes = {};
