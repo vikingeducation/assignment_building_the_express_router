@@ -18,6 +18,14 @@ app.get('/foo/:bar/fiz/:baz', (req, res) => {
   res.end(`Param name baz has a value of ${req.params.baz}`);
 });
 
+app.post('/foo', (req, res) => {
+  res.end('Got the post.\n');
+});
+
+app.post('/foo/:bar', (req, res) => {
+  res.end('Post with parameter.\n');
+});
+
 
 
 app.listen(3000, () => {

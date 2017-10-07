@@ -13,7 +13,7 @@ const app = {
 
     server.listen(port, cb);
   },
-  methods: ['get'],
+  methods: ['get', 'post'],
 };
 
 app.routes = {};
