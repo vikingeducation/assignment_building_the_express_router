@@ -25,20 +25,17 @@ app.get('/foo/:bar/fiz/:baz', (req,res) => {
 	res.end(`:bar = ${req.params.bar}<br>:baz = ${req.params.baz}`);
 });
 
-/*
-router.post('/', (req, res) => {
-  var data = req.body;
+//test POST with curl on windows command-line
+app.post('/', (req, res) => {
+  let data = req.body;
 
-  // If the content type is JSON, parse the data into a JSON string
   if (req.headers['content-type'] === 'application/json') {
     data = JSON.parse(req.body);
     data = JSON.stringify(data, null, 2);
   }
 
-  // Output the POST data
   res.end(`\nDC's POST data: ${ data }`);
 });
-*/
 
 // 4. Start up a server, and listener
 let port = process.env.PORT || 4000;
