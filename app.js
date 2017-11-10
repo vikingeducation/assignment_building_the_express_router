@@ -11,6 +11,11 @@ app.get('/', (req, res) => {
   res.end('Hi world!\n');
 });
 
+app.post('/foo/:bar/fiz', (req, res) => {
+  console.log(req);
+  res.end('Hi my POST!\n');
+});
+
 // 4. Start up a server with app.listen
 var port = process.env.PORT || 4000;
 var host = 'localhost';
