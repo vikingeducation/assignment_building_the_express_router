@@ -1,14 +1,23 @@
 # Building core feature of Express - ROUTER
 
-"In order to increase the depth of your knowledge of the Express router you will implement its core features in this assignment. You will then construct an application around your router that tests its functionality at a basic level. " - VCS
+This is a simple own creation of my own basic router, similar to express.js and simple application to test the data. This router consists of following features:
+- register routes associated callbacks with `app.get()` or `app.post()`,
+- starts up a server with `app.listen()`
+- parses Path Patterns and associates them with called routes in the browser
+- parameterizes Routing so to get the params, matches patterns in the app with paths clled in the broswer on in bash
+- enabled POST requests and parses POST data
+- enabled RESTful HTTP methods: get, post, put, patch, delete
+
 
 ## Getting Started
 
 If you have [installed node](https://nodejs.org/en/download/) on your computer, type the following commands
 
 ```
-$ node index.js
+$ node app.js
 ```
+
+and go to your browser to `localhost:4000`
 
 
 
