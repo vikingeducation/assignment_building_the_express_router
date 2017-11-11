@@ -16,6 +16,21 @@ app.post('/foo/:bar/fiz', (req, res) => {
   res.end('\nHi my POST!\n');
 });
 
+app.put('/foo/:bar/fiz', (req, res) => {
+  res.write(req.body);
+  res.end('\nHi my PUT!\n');
+});
+
+app.patch('/foo/:bar/fiz', (req, res) => {
+  res.write(req.body);
+  res.end('\nHi my PATCH!\n');
+});
+
+app.delete('/foo/:bar/fiz', (req, res) => {
+  res.write(req.body);
+  res.end('\nHi my DELETE!\n');
+});
+
 // 4. Start up a server with app.listen
 var port = process.env.PORT || 4000;
 var host = 'localhost';
