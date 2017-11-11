@@ -1,0 +1,19 @@
+{
+  "name": "assignment_building_the_express_router",
+  "version": "1.0.0",
+  "description": "\"In order to increase the depth of your knowledge of the Express router you will implement its core features in this assignment. You will then construct an application around your router that tests its functionality at a basic level. \" - VCS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Visiona/assignment_building_the_express_router.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Visiona/assignment_building_the_express_router/issues"
+  },
+  "homepage": "https://github.com/Visiona/assignment_building_the_express_router#readme"
+}
