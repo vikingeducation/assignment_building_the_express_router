@@ -12,8 +12,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/foo/:bar/fiz', (req, res) => {
-  console.log(req);
-  res.end('Hi my POST!\n');
+  res.write(req.body);
+  res.end('\nHi my POST!\n');
 });
 
 // 4. Start up a server with app.listen
