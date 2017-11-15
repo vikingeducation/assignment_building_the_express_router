@@ -3,7 +3,7 @@ let app = express();
 // 2. Create an application with the
 // returned function
 //var app = express();
-console.log(typeof express)
+
 // 3. Create routes via the app object
 app.get('/', (req, res) => {
   console.log(req);
