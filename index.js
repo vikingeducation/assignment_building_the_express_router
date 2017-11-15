@@ -1,5 +1,5 @@
 var express = require('./lib/express');
-
+let app = express();
 // 2. Create an application with the
 // returned function
 //var app = express();
