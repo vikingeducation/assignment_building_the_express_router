@@ -2,7 +2,7 @@ var express = require("./lib/express.js");
 
 var app = express;
 app.listen(3000, "localhost", () => {
-  //console.log("app is listening");
+  console.log('app is listening');
 });
 
 app.get("/", (req, res) => {
@@ -15,9 +15,21 @@ app.get("/foo/:bar", (req, res) => {
     res.write(req.params[key]);
   });
   res.end("foo bar");
-  //we want foo bar to show up on /foo/johndoe
 });
 
 app.post("/post/:form", (req, res) => {
-  res.end("form posted");
+  let body = '';
+  req.on('data', (data) => {
+    console.log('heres the data in req.on: ' + data);
+    body += data
+  })
+  req.on('end', () => {
+    req.body = body
+    console.log('req.body is ' + req.body);
+    res.end('data')
+  })
+  //req.on(end... replaces res.end("form posted \n");
 });
+
+//to test post run in terminal curl -X POST http://localhost:3000/post/sjdflksd
+//curl -d "data=example1&data2=example2" http://localhost:3000/post/sjdflksd
