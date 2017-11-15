@@ -10,6 +10,7 @@ app.get('/', (req, res) => {
 		res.end('Hi world!\n');
 		});
 app.get('/:name', (req, res)=>{
+		console.log(req);
 		console.log('works');
 		res.end('It works!\n');
 		});
