@@ -1,5 +1,6 @@
 var express = require('./lib/express');
 let app = express();
+let fs = require('fs')
 // 2. Create an application with the
 // returned function
 //var app = express();
@@ -22,7 +23,25 @@ app.post('/', (req, res) =>{
 	req.on('end', () =>{
 		res.end(body);
 		});
+   });
+app.put('/', (req,res) => {
+   
+   res.end('put!')
+
+  
+
 });
+
+app.patch('/', (req,res) => {
+   res.end('patch!')
+
+});
+app.delete('/', (req,res) => {
+   console.log(req)
+   res.end('delete!')
+});
+
+
 // 4. Start up a server with app.listen
 var port = process.env.PORT || 4000;
 var host = 'localhost';
