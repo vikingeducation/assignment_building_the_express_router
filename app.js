@@ -1,15 +1,13 @@
-var router = require('./lib/router');
-
 var http = require('http');
+var router = require('./lib/router');
+require('./routes');
 
 var port = process.env.PORT || process.argv[2] || 3000;
-
 var host = 'localhost';
 
-//Create server
-var app = http.createServer(router.handle);
+// Delegate the server callback to the router
+var server = http.createServer(router.handle);
 
-//listener
-app.listen(port, host, () => {
-	console.log(`Server listening at port ${port} and host ${host}`);
+server.listen(port, host, () => {
+	console.log(`Listening: http://${host}:${port}`);
 });
