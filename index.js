@@ -11,6 +11,7 @@ app.get("/", (req, res) => {
 
 app.get("/foo/:bar", (req, res) => {
   res.end("foo bar");
+  //we want foo bar to show up on /foo/johndoe
 });
 
 /*
