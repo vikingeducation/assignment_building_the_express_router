@@ -5,15 +5,14 @@ let app = express();
 let port = process.env.PORT || 3000;
 let host = "localhost";
 
-
-
 // Use the router to register callbacks
 // for paths and HTTP verbs
-router.get('/', (req, res) => {
+app.get('/', (req, res) => {
+  console.log("inside get")
   res.end('Hello GET!');
 });
 
-router.post('/', (req, res) => {
+app.post('/', (req, res) => {
   res.end('Hello POST!');
 });
 
