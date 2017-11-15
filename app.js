@@ -8,7 +8,7 @@ let host = "localhost";
 // Use the router to register callbacks
 // for paths and HTTP verbs
 app.get('/', (req, res) => {
-  console.log("inside get")
+  console.log("inside get");
   res.end('Hello GET!');
 });
 
