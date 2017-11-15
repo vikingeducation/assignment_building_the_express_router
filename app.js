@@ -1,9 +1,12 @@
+// APP
+
 let express = require("./lib/express.js");
 let router = require('./lib/router');
 
 let app = express();
 let port = process.env.PORT || 3000;
 let host = "localhost";
+
 
 // Use the router to register callbacks
 // for paths and HTTP verbs
@@ -19,3 +22,6 @@ app.post('/', (req, res) => {
 app.listen(port, host, () => {
   console.log(`server running at http://${host}:${port}/`);
 });
+
+
+
