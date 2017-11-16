@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
   res.end('Hello GET!');
 });
 
-app.get('/:user', (req, res) => {
+app.get('/users', (req, res) => {
   res.end("userTest");
 });
 
